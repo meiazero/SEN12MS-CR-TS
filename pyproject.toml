@@ -1,0 +1,46 @@
+[project]
+name = "sen12ms-cr-ts"
+version = "0.1.0"
+description = "SEN12MS-CR-TS reference code (CR-TS Net), fork"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "dominate>=2.9",  # util/html.py, imported by test.py and util/visualizer.py
+  "matplotlib>=3.9",
+  "natsort>=8.4",
+  "numpy>=2.1",
+  "pillow>=10.4",
+  "rasterio>=1.4",
+  "s2cloudless>=1.7",  # data/dataLoader.py computes cloud masks on the fly
+  "scipy>=1.14",
+  "tifffile>=2024.8",
+  "torch>=2.6",
+  "torchvision>=0.21",
+  "tqdm>=4.66",
+]
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.8"]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+# Upstream code keeps its own style.
+extend-exclude = ["data", "models", "options", "util", "preview", "train.py", "test.py", "standalone_dataloader.py"]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B", "SIM", "C4", "PTH", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003"]
+
+# cu126 wheels: the PyPI torch wheel targets CUDA 13, which needs a newer NVIDIA driver.
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+torchvision = { index = "pytorch-cu126" }
