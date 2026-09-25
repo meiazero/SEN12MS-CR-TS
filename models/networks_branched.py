@@ -3,7 +3,7 @@ import torch.nn as nn
 from torch.nn import init
 import functools
 from torch.optim import lr_scheduler
-import models.network_resnet_branched as initial_resnet
+from . import network_resnet_branched as initial_resnet
 import math
 
 

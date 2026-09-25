@@ -34,7 +34,11 @@ Clone this data set via `git clone https://github.com/PatrickTUM/SEN12MS-CR-TS.g
 
 The code is written in Python 3 and uses PyTorch > 1.4. It is strongly recommended to run the code with CUDA and GPU support. The code has been developed and deployed in Ubuntu 20 LTS and should be able to run in any comparable OS.
 
-Dependencies are managed with [uv](https://docs.astral.sh/uv) (Python 3.12, torch from the CUDA 12.6 wheel index):
+Dependencies are managed with [uv](https://docs.astral.sh/uv) (Python 3.12). The CR-TS Net generator is also an
+installable package, `crtsnet` (`src/crtsnet/`, symlinks to the `models/` files it needs), which
+other projects add as a path dependency; as a library it does not pin a torch build, so torch
+comes from PyPI here. `uv sync` also installs the `scripts` group the training and test scripts
+need:
 ```bash
 uv sync
 uv run python train.py ...   # or test.py, see Usage
