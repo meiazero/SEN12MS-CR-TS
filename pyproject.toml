@@ -27,7 +27,7 @@ package = false
 
 [tool.ruff]
 # Upstream code keeps its own style.
-extend-exclude = ["data", "models", "options", "util", "preview", "train.py", "test.py", "standalone_dataloader.py"]
+extend-exclude = ["data", "models", "options", "util", "preview", "train.py", "test.py", "standalone_dataloader.py", "README.md"]
 line-length = 100
 target-version = "py312"
 

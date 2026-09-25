@@ -106,3 +106,8 @@ You may also be interested in our SEN12MS-CR data set for mono-temporal cloud re
 ## Credits
 
 This code was originally based on the [STGAN repository](https://github.com/ermongroup/STGAN), which was originally based on the [pix2pix repository](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix). Our developed seq2point network was inspired by the original STGAN architecture (see [related paper](https://arxiv.org/abs/1912.06838)) as well as the ResNet for cloud removal in mono-temporal optical satellite data (see [related paper](https://www.sciencedirect.com/science/article/pii/S0924271620301398)). Thanks for making your code publicly available!
+
+## Checks before push
+
+Run `git config core.hooksPath .githooks` once per clone. `.githooks/pre-push` then
+refuses a push that fails `uvx ruff format --check .` or `uvx ruff check .`.
